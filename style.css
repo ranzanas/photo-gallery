@@ -109,7 +109,6 @@ figcaption {
 .photo-img:hover {
   cursor: pointer;
   transform: scale(105%);
-  filter: blur(1px);
 }
 
 @media screen and (max-width: 600px) {

@@ -65,10 +65,7 @@ header {
   height: 90%;
   object-fit: cover;
 }
-.photo-box {
 
-  overflow: hidden;
-}
 figcaption {
   margin-top: 5px;
   margin-bottom: 5px;
@@ -112,7 +109,7 @@ figcaption {
   grid-row: 7 / 10;
 }
 
-.photo-img:hover {
+.photo-box:hover {
   cursor: pointer;
   transform: scale(105%);
   transition: all 300ms ease-in-out;

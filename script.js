@@ -19,3 +19,11 @@ boxes.forEach(box => {
     });
   });
 });
+
+const hambar = document.querySelector(".hambar");
+const navbar = document.querySelector(".navbar")
+
+hambar.addEventListener("click", ()=>{
+  hambar.classList.toggle("active"); 
+  navbar.classList.toggle("active");
+})

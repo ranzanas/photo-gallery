@@ -27,3 +27,30 @@ hambar.addEventListener("click", ()=>{
   hambar.classList.toggle("active"); 
   navbar.classList.toggle("active");
 })
+
+
+
+
+const showMoreButton = document.querySelector(".showMoreButton");
+
+const displayPhotos = async () =>{
+  const response = await fetch("https://jsonplaceholder.typicode.com/photos");
+  const data = await response.json();
+
+
+  let currentIndex = 0;
+  batchSize = 10;
+  let endIndex = currentIndex + batchSize;
+
+  currentBatch = data.slice(currentIndex, endIndex);
+  currentBatch.forEach((cb) => 
+  {
+    console.log(cb)
+    const galleryContainer = document.querySelector(".galleryContainer");
+    const gallery = document.createElement('img');
+    gallery.src = cb.thumbnailUrl;
+    galleryContainer.appendChild(gallery);
+  })
+}
+
+showMoreButton.addEventListener("click", displayPhotos);

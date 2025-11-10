@@ -37,20 +37,19 @@ const displayPhotos = async () =>{
   const response = await fetch("https://jsonplaceholder.typicode.com/photos");
   const data = await response.json();
 
-
-  let currentIndex = 0;
-  batchSize = 10;
-  let endIndex = currentIndex + batchSize;
-
-  currentBatch = data.slice(currentIndex, endIndex);
-  currentBatch.forEach((cb) => 
-  {
-    console.log(cb)
-    const galleryContainer = document.querySelector(".galleryContainer");
-    const gallery = document.createElement('img');
-    gallery.src = cb.thumbnailUrl;
-    galleryContainer.appendChild(gallery);
-  })
+   let start = 0;
+   batchSize = 10;
+   let end = start + batchSize 
+   currentBatch = data.slice(start, end);
+   currentBatch.forEach((cb) => 
+   {
+     console.log(cb)
+     const galleryContainer = document.querySelector(".galleryContainer");
+     const galleryBox = document.createElement('div');
+     const gallery = document.createElement('img');
+     gallery.src = "./assests/images/landscape.jpg";
+     galleryContainer.appendChild(galleryBox).appendChild(gallery);
+   })
 }
 
 showMoreButton.addEventListener("click", displayPhotos);

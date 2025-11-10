@@ -147,6 +147,23 @@ figcaption {
   background-color: #ac804d;
 }
 
+.galleryContainer {
+  width: 100%;
+  display: flex;
+
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.galleryContainer div {
+  width: 250px;
+  height: 250px;
+  margin: 20px;
+}
+.galleryContainer div img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
 @media screen and (max-width: 600px) {
   .photo-container {
     width: 100%;

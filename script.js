@@ -33,15 +33,18 @@ hambar.addEventListener("click", ()=>{
 
 const showMoreButton = document.querySelector(".showMoreButton");
 
+
+let start = 0;
+batchSize = 10;
+
 const displayPhotos = async () =>{
+
   const response = await fetch("https://jsonplaceholder.typicode.com/photos");
   const data = await response.json();
 
-   let start = 0;
-   batchSize = 10;
-   let end = start + batchSize 
-   currentBatch = data.slice(start, end);
-   currentBatch.forEach((cb) => 
+  let end = start + batchSize 
+  currentBatch = data.slice(start, end);
+  currentBatch.forEach((cb) => 
    {
      console.log(cb)
      const galleryContainer = document.querySelector(".galleryContainer");
@@ -50,6 +53,8 @@ const displayPhotos = async () =>{
      gallery.src = "./assests/images/landscape.jpg";
      galleryContainer.appendChild(galleryBox).appendChild(gallery);
    })
+
+   start = end;
 }
 
 showMoreButton.addEventListener("click", displayPhotos);

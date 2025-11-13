@@ -39,14 +39,11 @@ batchSize = 10;
 
 const displayPhotos = async () =>{
 
-  const response = await fetch("https://jsonplaceholder.typicode.com/photos");
+  const response = await fetch(`https://jsonplaceholder.typicode.com/photos?_start=${start}&_limit=${batchSize}`);
   const data = await response.json();
-
-  let end = start + batchSize 
-  currentBatch = data.slice(start, end);
-  currentBatch.forEach((cb) => 
-   {
-     console.log(cb)
+  
+  console.log(data);
+  data.forEach(() => {
      const galleryContainer = document.querySelector(".galleryContainer");
      const galleryBox = document.createElement('div');
      const gallery = document.createElement('img');
@@ -54,7 +51,7 @@ const displayPhotos = async () =>{
      galleryContainer.appendChild(galleryBox).appendChild(gallery);
    })
 
-   start = end;
+   start = start + batchSize;
 }
 
 showMoreButton.addEventListener("click", displayPhotos);

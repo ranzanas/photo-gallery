@@ -30,7 +30,7 @@ hambar.addEventListener("click", ()=>{
 
 
 
-
+//show more button
 const showMoreButton = document.querySelector(".showMoreButton");
 
 

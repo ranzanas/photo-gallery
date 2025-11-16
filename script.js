@@ -29,6 +29,17 @@ hambar.addEventListener("click", ()=>{
 })
 
 
+//LOADER FUNCTIONALITY  
+
+const loader = document.querySelector(".loader");
+
+const showLoader = () =>{
+  loader.style.display = "block";
+}
+
+const hideLoader = () =>{
+  loader.style.display = "none";
+}
 
 //show more button
 const showMoreButton = document.querySelector(".showMoreButton");
@@ -39,9 +50,12 @@ batchSize = 10;
 
 const displayPhotos = async () =>{
 
+  showLoader();
+
   const response = await fetch(`https://jsonplaceholder.typicode.com/photos?_start=${start}&_limit=${batchSize}`);
   const data = await response.json();
   
+  hideLoader();
   console.log(data);
   data.forEach(() => {
      const galleryContainer = document.querySelector(".galleryContainer");
@@ -51,7 +65,9 @@ const displayPhotos = async () =>{
      galleryContainer.appendChild(galleryBox).appendChild(gallery);
    })
 
-   start = start + batchSize;
+  start = start + batchSize;
 }
 
 showMoreButton.addEventListener("click", displayPhotos);
+
+

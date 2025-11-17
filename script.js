@@ -43,7 +43,7 @@ const hideLoader = () =>{
 
 //show more button
 const showMoreButton = document.querySelector(".showMoreButton");
-
+const images = ['./assests/images/lion.jpg', './assests/images/coffee.jpg', './assests/images/statueofliberty.jpg','./assests/images/tea.jpg','./assests/images/redpanda.png','./assests/images/kangaroo.jpg','./assests/images/jumla.jpg','./assests/images/italy.jpg','./assests/images/denmark.jpg','./assests/images/cat.jpg'];
 
 let start = 0;
 batchSize = 10;
@@ -54,16 +54,22 @@ const displayPhotos = async () =>{
 
   const response = await fetch(`https://jsonplaceholder.typicode.com/photos?_start=${start}&_limit=${batchSize}`);
   const data = await response.json();
-  
   hideLoader();
+
+
   console.log(data);
-  data.forEach(() => {
-     const galleryContainer = document.querySelector(".galleryContainer");
-     const galleryBox = document.createElement('div');
-     const gallery = document.createElement('img');
-     gallery.src = "./assests/images/landscape.jpg";
-     galleryContainer.appendChild(galleryBox).appendChild(gallery);
-   })
+
+
+    const galleryContainer = document.querySelector(".galleryContainer");
+
+      images.map((path) =>{
+        const galleryBox = document.createElement('div');
+        const gallery = document.createElement('img');
+        gallery.src = path;
+        gallery.alt = data.title;
+
+        galleryContainer.appendChild(galleryBox).appendChild(gallery);
+      })
 
   start = start + batchSize;
 }

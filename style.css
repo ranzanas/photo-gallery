@@ -123,7 +123,8 @@ figcaption {
   grid-row: 7 / 10;
 }
 
-.photo-box:hover {
+.photo-box:hover,
+.gallery-media:hover {
   cursor: pointer;
   transition: all 300ms ease-in-out;
 }

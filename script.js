@@ -1,4 +1,4 @@
-const boxes = document.querySelectorAll('.photo-box');
+const boxes = document.querySelectorAll('.photo-box, .gallery-media');
 
 boxes.forEach(box => {
   box.addEventListener('mouseenter', () => {
@@ -60,6 +60,7 @@ const displayPhotos = async () =>{
 
   images.map((path, index) =>{
     const galleryBox = document.createElement('div');
+    galleryBox.className = "gallery-media";
     const gallery = document.createElement('img');
     gallery.src = path;
 

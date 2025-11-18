@@ -56,20 +56,23 @@ const displayPhotos = async () =>{
   const data = await response.json();
   hideLoader();
 
+  const galleryContainer = document.querySelector(".galleryContainer");
 
-  console.log(data);
+  images.map((path, index) =>{
+    const galleryBox = document.createElement('div');
+    const gallery = document.createElement('img');
+    gallery.src = path;
 
+    gallery.alt = data[index].title;
+    const galleryTitle = document.createElement('p');
 
-    const galleryContainer = document.querySelector(".galleryContainer");
+    galleryTitle.innerHTML = data[index].title;
+    galleryContainer.appendChild(galleryBox);
+    galleryBox.appendChild(gallery);
+    galleryBox.appendChild(galleryTitle);
+    
 
-      images.map((path) =>{
-        const galleryBox = document.createElement('div');
-        const gallery = document.createElement('img');
-        gallery.src = path;
-        gallery.alt = data.title;
-
-        galleryContainer.appendChild(galleryBox).appendChild(gallery);
-      })
+  })
 
   start = start + batchSize;
 }
